@@ -4,3 +4,9 @@
   overflow: auto;
   padding: 20px;
 }
+
+.content {
+  padding: 20px;
+  height: 100vh;
+  overflow: auto;
+}

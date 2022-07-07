@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { IoMdContact } from "react-icons/io";
 import { BsPeopleFill } from "react-icons/bs";
 import { FiMinimize2, FiMaximize2 } from "react-icons/fi";
-import { Layout, Button, Row, Col, Divider, Typography } from "antd";
+import { Layout, Button, Row, Divider } from "antd";
 import styles from "../styles/Layout.module.css";
 import NavItem from "../components/NavItem";
 
 const { Sider, Content } = Layout;
-const { Title } = Typography;
 
 export default function Basic({ children }) {
   const [collapse, setCollapse] = useState(true);
@@ -51,7 +49,7 @@ export default function Basic({ children }) {
         />
       </Sider>
       <Layout>
-        <Content>{children}</Content>
+        <Content className={styles.content}>{children}</Content>
       </Layout>
     </Layout>
   );

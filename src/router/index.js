@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Basic from "../layouts/Basic";
+import NotFound from "../pages/NotFound";
 
 export default function router() {
   return (
@@ -39,6 +40,7 @@ export default function router() {
             }
           />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

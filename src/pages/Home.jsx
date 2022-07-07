@@ -1,7 +1,8 @@
-import { Col, Row, Table, Form, Input, Button } from "antd";
-import React, { useState } from "react";
+import { Col, Row, Table, Form, Input, Button, Image } from "antd";
+import React, { useEffect, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import data from "../data/product.json";
+import { Link } from "react-router-dom";
 
 const columns = [
   {
@@ -25,7 +26,7 @@ const columns = [
     title: "Photo",
     dataIndex: "images",
     render: (images) => (
-      <img
+      <Image
         style={{ width: "70px", height: "70px", objectFit: "cover" }}
         src={images[0]}
         alt="Product"
@@ -33,12 +34,34 @@ const columns = [
     ),
     responsive: ["md"],
   },
+  {
+    title: "Action",
+    dataIndex: "id",
+    render: (id) => (
+      <Link to={`/detail/${id}`}>
+        <Button type="primary">Detail</Button>
+      </Link>
+    ),
+  },
 ];
 
 export default function Home() {
   const [productData, setProductData] = useState(data);
+  const [search, setSearch] = useState(localStorage.getItem("search"));
+
+  useEffect(() => {
+    if (localStorage.getItem("search")) {
+      filterProduct(localStorage.getItem("search"));
+    }
+  }, []);
 
   const onFinish = ({ search = "" }) => {
+    localStorage.setItem("search", search);
+
+    filterProduct(search);
+  };
+
+  const filterProduct = (search) => {
     const productDataFiltered = data.filter((product) => {
       return product.title
         .trim()
@@ -61,7 +84,11 @@ export default function Home() {
           <Form.Item name="search" style={{ marginBottom: "15px" }}>
             <Row justify="center">
               <Col span={16}>
-                <Input placeholder="Search product by name" />
+                <Input
+                  placeholder="Search product by name"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
               </Col>
               <Col span={2} style={{ backgroundColor: "red" }}>
                 <Button

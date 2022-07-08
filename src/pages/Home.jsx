@@ -1,8 +1,8 @@
-import { Col, Row, Table, Form, Input, Button, Image } from "antd";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Col, Row, Table, Form, Input, Button, Image } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import data from "../data/product.json";
-import { Link } from "react-router-dom";
 
 const columns = [
   {
@@ -24,11 +24,11 @@ const columns = [
   },
   {
     title: "Photo",
-    dataIndex: "images",
-    render: (images) => (
+    dataIndex: "thumbnail",
+    render: (thumbnail) => (
       <Image
         style={{ width: "70px", height: "70px", objectFit: "cover" }}
-        src={images[0]}
+        src={thumbnail}
         alt="Product"
       />
     ),
@@ -85,7 +85,7 @@ export default function Home() {
             <Row justify="center">
               <Col span={16}>
                 <Input
-                  placeholder="Search product by name"
+                  placeholder="Search product by title"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />

@@ -5,6 +5,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Basic from "../layouts/Basic";
 import NotFound from "../pages/NotFound";
+import Detail from "../pages/Detail";
 
 export default function router() {
   return (
@@ -16,6 +17,16 @@ export default function router() {
             element={
               <Basic>
                 <Home />
+              </Basic>
+            }
+          />
+        </Route>
+        <Route path="/detail/:id">
+          <Route
+            index
+            element={
+              <Basic>
+                <Detail />
               </Basic>
             }
           />

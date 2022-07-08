@@ -11,9 +11,9 @@ export default function Detail() {
 
   const productDetail = data.filter((product) => {
     return parseInt(product.id) === parseInt(urlParams.id);
-  });
+  })[0];
 
-  if (!productDetail.length) {
+  if (!productDetail) {
     return (
       <div>
         <Link to="/">
@@ -32,19 +32,20 @@ export default function Detail() {
             <TiArrowBack style={{ fontSize: "20px" }} />
           </Button>
         </Link>
-        <Title level={3}>{productDetail[0].title}</Title>
+        <Title level={3}>{productDetail.title}</Title>
         <Space direction="vertical">
-          <Text>Description: {productDetail[0].description}</Text>
-          <Text>Stock: {productDetail[0].stock}</Text>
-          <Text>Price: {productDetail[0].price}</Text>
-          <Text>Rating: {productDetail[0].rating}</Text>
-          <Text>Brand: {productDetail[0].brand}</Text>
-          <Text>Category: {productDetail[0].category}</Text>
+          <Text>Description: {productDetail.description}</Text>
+          <Text>Stock: {productDetail.stock}</Text>
+          <Text>Price: {productDetail.price}</Text>
+          <Text>Rating: {productDetail.rating}</Text>
+          <Text>Brand: {productDetail.brand}</Text>
+          <Text>Category: {productDetail.category}</Text>
           <Divider />
           <Text>Photo Collection</Text>
           <Image.PreviewGroup>
-            {productDetail[0].images.map((image) => (
+            {productDetail.images.map((image, index) => (
               <Image
+                key={index}
                 style={{ width: "100px", height: "100px", objectFit: "cover" }}
                 src={image}
                 alt="Product"

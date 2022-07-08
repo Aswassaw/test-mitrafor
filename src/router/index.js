@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Basic from "../layouts/Basic";
 import Home from "../pages/Home";
+import Detail from "../pages/Detail";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
-import Basic from "../layouts/Basic";
 import NotFound from "../pages/NotFound";
-import Detail from "../pages/Detail";
 
 export default function router() {
   return (

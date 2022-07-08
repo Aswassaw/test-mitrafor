@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Table, Form, Input, Button, Image } from "antd";
+import { Col, Row, Table, Form, Input, Button, Image, Typography } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import data from "../data/product.json";
+
+const { Title } = Typography;
 
 const columns = [
   {
@@ -73,36 +75,41 @@ export default function Home() {
   };
 
   return (
-    <Row justify="center">
-      <Col span={18}>
-        <Form
-          wrapperCol={{ span: 24 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          autoComplete="off"
-        >
-          <Form.Item name="search" style={{ marginBottom: "15px" }}>
-            <Row justify="center">
-              <Col span={16}>
-                <Input
-                  placeholder="Search product by title"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </Col>
-              <Col span={2} style={{ backgroundColor: "red" }}>
-                <Button
-                  style={{ width: "100%" }}
-                  type="primary"
-                  htmlType="submit"
-                  icon={<SearchOutlined />}
-                ></Button>
-              </Col>
-            </Row>
-          </Form.Item>
-        </Form>
-        <Table columns={columns} dataSource={productData} rowKey="id" />
-      </Col>
-    </Row>
+    <div>
+      <Title style={{ textAlign: "center", marginBottom: "20px" }} level={3}>
+        Home Page
+      </Title>
+      <Row justify="center">
+        <Col span={18}>
+          <Form
+            wrapperCol={{ span: 24 }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            autoComplete="off"
+          >
+            <Form.Item name="search" style={{ marginBottom: "15px" }}>
+              <Row justify="center">
+                <Col span={16}>
+                  <Input
+                    placeholder="Search product by title"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </Col>
+                <Col span={2} style={{ backgroundColor: "red" }}>
+                  <Button
+                    style={{ width: "100%" }}
+                    type="primary"
+                    htmlType="submit"
+                    icon={<SearchOutlined />}
+                  ></Button>
+                </Col>
+              </Row>
+            </Form.Item>
+          </Form>
+          <Table columns={columns} dataSource={productData} rowKey="id" />
+        </Col>
+      </Row>
+    </div>
   );
 }

@@ -57,7 +57,7 @@ export default function Home() {
     }
   }, []);
 
-  const onFinish = ({ search = "" }) => {
+  const onFinish = () => {
     localStorage.setItem("search", search);
 
     filterProduct(search);

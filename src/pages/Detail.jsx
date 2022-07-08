@@ -10,7 +10,7 @@ export default function Detail() {
   const urlParams = useParams();
 
   const productDetail = data.filter((product) => {
-    return product.id == urlParams.id;
+    return parseInt(product.id) === parseInt(urlParams.id);
   });
 
   if (!productDetail.length) {
